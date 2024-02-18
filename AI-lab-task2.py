@@ -1,0 +1,16 @@
+mark=int(input())
+if(mark>=80):
+    grade="A+"
+elif(mark>=75):
+    grade="A"
+elif(mark>=70):
+    grade="A-"
+elif(mark>=65):
+    grade="B+"
+elif(mark>=60):
+    grade="B"
+elif(mark>=50):
+    grade="C"
+else:
+    grade="F"
+print(grade)
