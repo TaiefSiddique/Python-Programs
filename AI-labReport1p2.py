@@ -1,25 +1,22 @@
-def count_even_odd(numbers):
-    even_count = 0
-    odd_count = 0
+def count(numbers):
+    evenCount = 0
+    oddCount = 0
     for num in numbers:
         if num % 2 == 0:
-            even_count += 1
+            evenCount += 1
         else:
-            odd_count += 1
-    return even_count, odd_count
+            oddCount += 1
+    return evenCount, oddCount
 
-def main():
-    numbers = []
-    n = int(input("Enter the number of elements in the list: "))
-    print("Enter the elements:")
-    for i in range(n):
-        num = int(input())
-        numbers.append(num)
 
-    even_count, odd_count = count_even_odd(numbers)
+numbers = []
+n = int(input("Enter the number of elements in the list: "))
+print("Enter the elements:")
+for i in range(n):
+    num = int(input())
+    numbers.append(num)
 
-    print("Even numbers:", even_count)
-    print("Odd numbers:", odd_count)
+evenCount, oddCount = count(numbers)
 
-if __name__ == "__main__":
-    main()
+print("Even numbers:", evenCount)
+print("Odd numbers:", oddCount)
