@@ -1,10 +1,6 @@
 import numpy as p
 from sklearn.datasets import load_iris
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn import metrics
-import matplotlib.pyplot as plt
+
 
 iris = load_iris()
 print(iris.feature_names)
@@ -14,9 +10,11 @@ print(iris.data.shape)
 
 X = iris.data[:, :4]
 y = iris.target
+from sklearn.preprocessing import StandardScaler
 
 scaler = StandardScaler()
 scaler.fit(X_train)
+
 X_train = scaler.transform(X_train)
 X_test = scaler.transform(X_test)
 
@@ -24,14 +22,15 @@ print(X_train.shape)
 print(X_test.shape)
 print(y_train.shape)
 print(y_test.shape)
-
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.model_selection import train_test_split
+from sklearn import metrics
 best_k = None
 best_avg = 0
 
 for k in range(1, 15):
     scores = {}
     scores_list = []
-
     for _ in range(10):
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30)
         scaler = StandardScaler()
@@ -45,14 +44,8 @@ for k in range(1, 15):
         
         scores[k] = metrics.accuracy_score(y_test, y_pred)
         scores_list.append(metrics.accuracy_score(y_test, y_pred))
-        
-        #result = metrics.confusion_matrix(y_test, y_pred)
-        #result1= metrics.classification_report(y_test, y_pred)
-        #print("Confusion_Matrix : ")
-        #print(result)
-        #print("Classification_Report : ")
-        #print(result1)
-        
+    
+    import matplotlib.pyplot as plt
     plt.plot(scores_list)
     plt.xlabel("Value_of_K")
     plt.ylabel("Accuracy")
